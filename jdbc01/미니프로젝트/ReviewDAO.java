@@ -48,7 +48,7 @@ public class ReviewDAO { //CRUD
 			//SQL부품으로 만들어주어야 함.
 			//PreparedStatement가 SQL부품!!
 			
-			String sql = "select pm.STORE, pr.RATING, pm.NAME, pr.CONTENT from hr.P_REVIEW pr, hr.P_ORDER po, hr.P_MENU pm where pr.ORDER_NO = po.NO AND po.MENU_NO = pm.NO AND po.ID = ?";
+			String sql = "select pm.STORE, pr.RATING, pm.NAME, pr.CONTENT, pr.ORDER_NO from hr.P_REVIEW pr, hr.P_ORDER po, hr.P_MENU pm where pr.ORDER_NO = po.NO AND po.MENU_NO = pm.NO AND po.ID = ?";
 			PreparedStatement ps = con.prepareStatement(sql); //PreparedStatement
 			ps.setString(1, id);
 			System.out.println("3. SQL문 부품(객체)으로 만들어주기 성공.");
@@ -64,7 +64,7 @@ public class ReviewDAO { //CRUD
 				double rating = rs.getDouble(2); //rating
 				String m_name = rs.getString(3); //m_name
 				String content = rs.getString(4); //content
-				
+				int order_no = rs.getInt(5);
 				//검색결과를 검색하면 UI부분을 줘야함.
 				//가방을 만들자
 				bag = new ReviewVO();
@@ -73,6 +73,7 @@ public class ReviewDAO { //CRUD
 				bag.setRating(rating);
 				bag.setMname(m_name);
 				bag.setContent(content);
+				bag.setOrder_no(order_no);
 				
 				//list에 bag을 추가해준다
 				list.add(bag);
