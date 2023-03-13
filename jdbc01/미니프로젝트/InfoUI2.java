@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
@@ -23,6 +24,7 @@ public class InfoUI2 {
 	public static JPanel[] panel = new JPanel[3];
 	// public static JButton button = null;
 	public static JButton[] order_btn = new JButton[3];
+	public static JButton[] order_btn2 = new JButton[3];
 	public static JButton[] review_btn1 = new JButton[3];
 	public static JButton[] review_btn2 = new JButton[3];
 	public static JButton[] coupon_btn = new JButton[3];
@@ -30,17 +32,19 @@ public class InfoUI2 {
 	public static OrderDAO dao1 = null;
 	public static ReviewDAO dao2 = null;
 	public static CouponDAO dao3 = null;
-	public static int i;
-	public static int j;
-	public static int k;
-	public static int x;
+	public static int i, j, k, x;
+	public static int t;
 
+	public static InfoUI_sub1 s;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int cnt = 160;
 
 		dao1 = new OrderDAO();
 		ArrayList<OrderVO> orderlist = dao1.list(id);
+
+		dao2 = new ReviewDAO();
+		ArrayList<ReviewVO> reviewlist = dao2.list(id);
 
 		all = new String[orderlist.size()][4];
 //		panel.setLayout(new GridLayout(4,1));
@@ -50,6 +54,7 @@ public class InfoUI2 {
 		Font font3 = new Font("맑은 고딕", 0, 15);
 
 		JFrame f = new JFrame();
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(466, 700);
 		f.setTitle("나의 정보");
 		f.setFont(font3);
@@ -94,22 +99,6 @@ public class InfoUI2 {
 				label.setFont(font3);
 				panel[i].add(label);
 				order_btn[i] = new JButton("주문내역 상세보기");
-				order_btn[i].addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
-						dao1 = new OrderDAO();
-						OrderVO bag = dao1.one(id, orderlist.get(i).getSname(), orderlist.get(i).getMname());
-						String sname = bag.getSname();
-						String mname = bag.getMname();
-						String addr = bag.getAddr();
-						int price = bag.getPrice();
-						
-						InfoUI_sub1 tab = new InfoUI_sub1();
-						tab.open(sname, mname, addr, price, id);
-					}
-				});
 				order_btn[i].setFont(font3);
 				order_btn[i].setBackground(Color.DARK_GRAY);
 				order_btn[i].setForeground(Color.white);
@@ -117,6 +106,92 @@ public class InfoUI2 {
 
 				f.add(panel[i]);
 			}
+			
+			for(t=0; t<order_btn.length; t++)
+			{
+				if(order_btn[t] != null)
+				{
+					order_btn[t].addActionListener(new ActionListener() {
+						
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							// TODO Auto-generated method stub
+							InfoUI_sub1 s = new InfoUI_sub1();
+							s.open2(id, t);
+						}
+					});
+				}
+			}
+//			if(order_btn[0] != null)
+//			{
+//				order_btn[0].addActionListener(new ActionListener() {
+//					@Override
+//					public void actionPerformed(ActionEvent e) {
+//						System.out.println("리뷰를 수정함.");
+//						//dao2 = new ReviewDAO();
+//						
+//						int no = orderlist.get(0).getOrder_no();
+//						String sname = orderlist.get(0).getSname();
+//						String mname = orderlist.get(0).getMname();
+//						String addr = orderlist.get(0).getAddr();
+//						int price = orderlist.get(0).getPrice();
+//						
+//						InfoUI_sub1 s = new InfoUI_sub1();
+//						s.open(no, sname, mname, addr, price, id);
+//						System.out.println("@@@===================");
+//						System.out.println("@@@0번째 정보 확인");
+//						f.revalidate();
+//						f.repaint();
+//					}
+//				});
+//			}
+//			if(order_btn[1] != null)
+//			{
+//				order_btn[1].addActionListener(new ActionListener() {
+//					@Override
+//					public void actionPerformed(ActionEvent e) {
+//						System.out.println("리뷰를 수정함.");
+//						//dao2 = new ReviewDAO();
+//
+//						int no = orderlist.get(1).getOrder_no();
+//						String sname = orderlist.get(1).getSname();
+//						String mname = orderlist.get(1).getMname();
+//						String addr = orderlist.get(1).getAddr();
+//						int price = orderlist.get(1).getPrice();
+//						
+//						InfoUI_sub1 s = new InfoUI_sub1();
+//						s.open(no, sname, mname, addr, price, id);
+//						
+//						System.out.println("1번째 정보 확인");
+//						f.revalidate();
+//						f.repaint();
+//					}
+//				});
+//			}
+//			if(order_btn[2] != null)
+//			{
+//				order_btn[2].addActionListener(new ActionListener() {
+//					@Override
+//					public void actionPerformed(ActionEvent e) {
+//						System.out.println("리뷰를 수정함.");
+//						//dao2 = new ReviewDAO();
+//						
+//						int no = orderlist.get(2).getOrder_no();
+//						String sname = orderlist.get(2).getSname();
+//						String mname = orderlist.get(2).getMname();
+//						String addr = orderlist.get(2).getAddr();
+//						int price = orderlist.get(2).getPrice();
+//						
+//						InfoUI_sub1 s = new InfoUI_sub1();
+//						s.open(no, sname, mname, addr, price, id);
+//						
+//						System.out.println("2번째 정보 확인");
+//						f.revalidate();
+//						f.repaint();
+//					}
+//				});
+//			}
+			
 		}
 
 		bb1.setBackground(Color.DARK_GRAY);
@@ -156,7 +231,13 @@ public class InfoUI2 {
 				b1.setBackground(color2);
 				b2.setBackground(Color.white);
 				b3.setBackground(Color.white);
-
+				
+				f.getContentPane().removeAll();
+				f.add(title);
+				f.add(b1);
+				f.add(b2);
+				f.add(b3);
+				
 				if (orderlist.size() == 0) {
 					System.out.println("검색결과없음.");
 //					f.getContentPane().remove(panel[i]);
@@ -164,13 +245,7 @@ public class InfoUI2 {
 					int no[] = new int[orderlist.size()];
 					System.out.println("검색결과는 총 " + orderlist.size() + "개 입니다.");
 
-					f.getContentPane().removeAll();
-
-					f.add(title);
-					f.add(b1);
-					f.add(b2);
-					f.add(b3);
-					for (j = 0; j < all.length; j++) { // 13개의 가방,13개의 행
+					for (j = 0; j < orderlist.size(); j++) { // 13개의 가방,13개의 행
 						panel[j] = new JPanel();
 						panel[j].setBackground(Color.white);
 						panel[j].setBorder(new LineBorder(Color.darkGray, 1, true));
@@ -194,29 +269,13 @@ public class InfoUI2 {
 						label.setFont(font3);
 						// string = label.getText().replaceAll("[^0-9]", "");
 						panel[j].add(label);
-						order_btn[j] = new JButton("주문내역 상세보기");
-						order_btn[j].addActionListener(new ActionListener() {
-							
-							@Override
-							public void actionPerformed(ActionEvent e) {
-								// TODO Auto-generated method stub
-								dao1 = new OrderDAO();
-								OrderVO bag = dao1.one(id, orderlist.get(j).getSname(), orderlist.get(j).getMname());
-								String sname = bag.getSname();
-								String mname = bag.getMname();
-								String addr = bag.getAddr();
-								int price = bag.getPrice();
-								
-								InfoUI_sub1 tab = new InfoUI_sub1();
-								tab.open(sname, mname, addr, price, id);
-							}
-						});
-						order_btn[j].setBorderPainted(false);
-						order_btn[j].setBackground(Color.DARK_GRAY);
-						order_btn[j].setForeground(Color.white);
-						order_btn[j].setFont(font3);
+						order_btn2[j] = new JButton("주문내역 상세보기");
+						order_btn2[j].setBorderPainted(false);
+						order_btn2[j].setBackground(Color.DARK_GRAY);
+						order_btn2[j].setForeground(Color.white);
+						order_btn2[j].setFont(font3);
 
-						panel[j].add(order_btn[j]);
+						panel[j].add(order_btn2[j]);
 						f.add(panel[j]);
 //						order_btn[j].addActionListener(new ActionListener() {
 //							@Override
@@ -226,7 +285,78 @@ public class InfoUI2 {
 //							}
 //						});
 					}
+					if(order_btn2[0] != null)
+					{
+						order_btn2[0].addActionListener(new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								System.out.println("주문상세정보를 확인함");
+								//dao2 = new ReviewDAO();
+
+								int no = orderlist.get(0).getOrder_no();
+								String sname = orderlist.get(0).getSname();
+								String mname = orderlist.get(0).getMname();
+								String addr = orderlist.get(0).getAddr();
+								int price = orderlist.get(0).getPrice();
+								
+								InfoUI_sub1 s = new InfoUI_sub1();
+								s.open(no, sname, mname, addr, price, id);
+								System.out.println("1번===================");	
+								System.out.println("0번째 정보 확인");
+								f.revalidate();
+								f.repaint();
+							}
+						});
+					}
+					if(order_btn2[1] != null)
+					{
+						order_btn2[1].addActionListener(new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								System.out.println("주문상세정보를 확인함");
+								//dao2 = new ReviewDAO();
+
+								int no = orderlist.get(1).getOrder_no();
+								String sname = orderlist.get(1).getSname();
+								String mname = orderlist.get(1).getMname();
+								String addr = orderlist.get(1).getAddr();
+								int price = orderlist.get(1).getPrice();
+								
+								InfoUI_sub1 s = new InfoUI_sub1();
+								s.open(no, sname, mname, addr, price, id);
+								
+								System.out.println("1번째 정보 확인");
+								f.revalidate();
+								f.repaint();
+							}
+						});
+					}
+					if(order_btn2[2] != null)
+					{
+						order_btn2[2].addActionListener(new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								System.out.println("리뷰를 수정함.");
+								//dao2 = new ReviewDAO();
+								
+								int no = orderlist.get(2).getOrder_no();
+								String sname = orderlist.get(2).getSname();
+								String mname = orderlist.get(2).getMname();
+								String addr = orderlist.get(2).getAddr();
+								int price = orderlist.get(2).getPrice();
+								
+								InfoUI_sub1 s = new InfoUI_sub1();
+								s.open(no, sname, mname, addr, price, id);
+								
+								System.out.println("2번째 정보 확인");
+								f.revalidate();
+								f.repaint();
+							}
+						});
+					}
 				}
+				
+				
 				f.revalidate();
 				f.repaint();
 			}
@@ -245,18 +375,18 @@ public class InfoUI2 {
 				b2.setBackground(color2);
 				b3.setBackground(Color.white);
 
+				f.getContentPane().removeAll();
+				f.add(title);
+				f.add(b1);
+				f.add(b2);
+				f.add(b3);
+				
 				if (orderlist.size() == 0) {
 					System.out.println("검색결과없음.");
 //					f.getContentPane().remove(panel[i]);
 				} else {
 					System.out.println("검색결과는 총 " + reviewlist.size() + "개 입니다.");
 
-					f.getContentPane().removeAll();
-
-					f.add(title);
-					f.add(b1);
-					f.add(b2);
-					f.add(b3);
 					for (k = 0; k < reviewlist.size(); k++) { // 13개의 가방,13개의 행
 						panel[k] = new JPanel();
 						panel[k].setBackground(Color.white);
@@ -270,7 +400,7 @@ public class InfoUI2 {
 						label = new JLabel(reviewlist.get(k).getSname());
 						label.setFont(font2);
 						panel[k].add(label);
-						label = new JLabel(reviewlist.get(k).getRating() + "점");
+						label = new JLabel("별점 : " + reviewlist.get(k).getRating() + "점");
 						label.setFont(font3);
 						panel[k].add(label);
 						label = new JLabel(reviewlist.get(k).getMname());
@@ -301,28 +431,151 @@ public class InfoUI2 {
 						review_btn2[k].setPreferredSize(new Dimension(210, 30));
 						review_btn2[k].setMargin(new Insets(0, 0, 0, 0)); // Set margin to zero
 						test.add(review_btn2[k]);
-						review_btn2[k].addActionListener(new ActionListener() {
-							
-							@Override
-							public void actionPerformed(ActionEvent e) {
-								// TODO Auto-generated method stub
-								dao2 = new ReviewDAO();
-								dao2.delete(reviewlist.get(k).getOrder_no());
-							}
-						});
+
 						// panel[k].add(button);
 						panel[k].add(test);
 						f.add(panel[k]);
+					}
+					//리뷰 수정 버튼 이벤트
+					if(review_btn1[0] != null)
+					{
+						review_btn1[0].addActionListener(new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								System.out.println("리뷰를 수정함.");
+								//dao2 = new ReviewDAO();
+
+								String content = reviewlist.get(0).getContent();
+								int no = reviewlist.get(0).getOrder_no();
+								InfoUI_sub2 s = new InfoUI_sub2();
+								s.open(no, content);
+								
+								System.out.println("0번째 목록 수정");
+								f.revalidate();
+								f.repaint();
+							}
+						});
+					}
+					if(review_btn1[1] != null)
+					{
+						review_btn1[1].addActionListener(new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								System.out.println("리뷰를 수정함.");
+								//dao2 = new ReviewDAO();
+
+								String content = reviewlist.get(1).getContent();
+								int no = reviewlist.get(1).getOrder_no();
+								InfoUI_sub2 s = new InfoUI_sub2();
+								s.open(no, content);
+								
+								System.out.println("1번째 목록 수정");
+								f.revalidate();
+								f.repaint();
+							}
+						});
+					}
+					if(review_btn1[2] != null)
+					{
+						review_btn1[2].addActionListener(new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								System.out.println("리뷰를 수정함.");
+								//dao2 = new ReviewDAO();
+
+								String content = reviewlist.get(2).getContent();
+								int no = reviewlist.get(2).getOrder_no();
+								InfoUI_sub2 s = new InfoUI_sub2();
+								s.open(no, content);
+								
+								System.out.println("2번째 목록 수정");
+								f.revalidate();
+								f.repaint();
+							}
+						});
+					}
+					//리뷰 삭제 버튼 이벤트
+					if(review_btn2[0] != null)
+					{
+						review_btn2[0].addActionListener(new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								// TODO Auto-generated method stub
+								ReviewDAO dao = new ReviewDAO();
+								ReviewVO bag = new ReviewVO();
+								dao.delete(bag.getOrder_no());
+								int result = JOptionPane.showConfirmDialog(f, "리뷰를 삭제하시겠습니까?");
+								if (result == JOptionPane.YES_OPTION) {
+									System.out.println("리뷰를 삭제함.");
+									dao2 = new ReviewDAO();
+
+									dao2.delete(reviewlist.get(0).getOrder_no());
+									System.out.println("0번째 목록 삭제");
+								} else {
+									System.out.println("리뷰삭제를 그만둠");
+								}
+								f.revalidate();
+								f.repaint();
+							}
+						});
+					}
+					if(review_btn2[1] != null)
+					{
+						review_btn2[1].addActionListener(new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								// TODO Auto-generated method stub
+								ReviewDAO dao = new ReviewDAO();
+								ReviewVO bag = new ReviewVO();
+								dao.delete(bag.getOrder_no());
+								int result = JOptionPane.showConfirmDialog(f, "리뷰를 삭제하시겠습니까?");
+								if (result == JOptionPane.YES_OPTION) {
+									System.out.println("리뷰를 삭제함.");
+									dao2 = new ReviewDAO();
+
+									dao2.delete(reviewlist.get(1).getOrder_no());
+									System.out.println("1번째 목록 삭제");
+								} 
+								else {
+									System.out.println("리뷰삭제를 그만둠");
+								}
+								f.revalidate();
+								f.repaint();
+							}
+						});
+					}
+					if(review_btn2[2] != null)
+					{
+						review_btn2[2].addActionListener(new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								// TODO Auto-generated method stub
+								ReviewDAO dao = new ReviewDAO();
+								ReviewVO bag = new ReviewVO();
+								dao.delete(bag.getOrder_no());
+								int result = JOptionPane.showConfirmDialog(f, "리뷰를 삭제하시겠습니까?");
+								if (result == JOptionPane.YES_OPTION) {
+									System.out.println("리뷰를 삭제함.");
+									dao2 = new ReviewDAO();
+
+									dao2.delete(reviewlist.get(2).getOrder_no());
+									System.out.println("2번째 목록 삭제");
+								} 
+								else {
+									System.out.println("리뷰삭제를 그만둠");
+								}
+								f.revalidate();
+								f.repaint();
+							}
+						});
 					}
 				}
 				f.revalidate();
 				f.repaint();
 			}
 		});
-		
-		
-		b3.addActionListener(new ActionListener() {
 
+		b3.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dao3 = new CouponDAO();
@@ -335,19 +588,19 @@ public class InfoUI2 {
 				b1.setBackground(Color.white);
 				b2.setBackground(Color.white);
 				b3.setBackground(color2);
+				
+				f.getContentPane().removeAll();
 
+				f.add(title);
+				f.add(b1);
+				f.add(b2);
+				f.add(b3);
 				if (couponlist.size() == 0) {
 					System.out.println("검색결과없음.");
 //					f.getContentPane().remove(panel[i]);
 				} else {
 					System.out.println("검색결과는 총 " + couponlist.size() + "개 입니다.");
-
-					f.getContentPane().removeAll();
-
-					f.add(title);
-					f.add(b1);
-					f.add(b2);
-					f.add(b3);
+					
 					for (x = 0; x < couponlist.size(); x++) { // 13개의 가방,13개의 행
 						panel[x] = new JPanel();
 						panel[x].setBackground(Color.white);
@@ -382,6 +635,8 @@ public class InfoUI2 {
 				f.repaint();
 			}
 		});
+
+
 		b1.setBorderPainted(false);
 		b2.setBorderPainted(false);
 		b3.setBorderPainted(false);
@@ -413,7 +668,9 @@ public class InfoUI2 {
 		f.add(b1);
 		f.add(b2);
 		f.add(b3);
-
+		
 		f.setVisible(true);
+
+		b1.doClick();
 	}
 }
