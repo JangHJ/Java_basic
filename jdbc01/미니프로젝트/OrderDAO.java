@@ -33,7 +33,7 @@ public class OrderDAO { // CRUD
 			Connection con = DriverManager.getConnection(url, user, password); // Connection
 			System.out.println("2. 오라클 연결 성공.");
 
-			String sql = "select pm.STORE, pm.NAME, pm.PRICE, po.NO from hr.P_MENU pm, hr.P_ORDER po where pm.NO = po.MENU_NO AND id = ?";
+			String sql = "select pm.STORE, pm.NAME, pm.PRICE, po.NO, pm2.ADDR from hr.P_MENU pm, hr.P_ORDER po, hr.P_MEMBER pm2 where pm.NO = po.MENU_NO AND po.ID = pm2.ID AND po.id = ?";
 			PreparedStatement ps = con.prepareStatement(sql); // PreparedStatement
 			ps.setString(1, id);
 			System.out.println("3. SQL문 부품(객체)으로 만들어주기 성공.");
@@ -49,6 +49,7 @@ public class OrderDAO { // CRUD
 				String m_name = rs.getString(2); // m_name
 				int price = rs.getInt(3); // price
 				int order_no = rs.getInt(4); // order_no
+				String addr = rs.getString(5); //addr
 
 				// 검색결과를 검색하면 UI부분을 줘야함.
 				// 가방을 만들자
@@ -58,6 +59,7 @@ public class OrderDAO { // CRUD
 				bag.setMname(m_name);
 				bag.setPrice(price);
 				bag.setOrder_no(order_no);
+				bag.setAddr(addr);
 
 				// list에 bag을 추가해준다
 				list.add(bag);
