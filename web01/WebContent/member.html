@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//alert('회원정보 페이지입니다.')
+</script>
+<style type="text/css">
+body { /* 컨트롤 + / - 자동주석, 태그선택! */
+	background: #95eced;
+}
+button {
+	background: pink;
+}
+.t1{ /* .은 클래스, 여러개 선택 */
+	background: yellow;
+	width: 150px;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+<h3>회원정보 페이지</h3>
+<hr>
+<a href="index.html">
+	<button>목차페이지로</button>
+</a>
+<table border="1">
+	<tr>
+		<td class="t1">회원가입</td>
+		<td>
+			<a href="insert.html">
+				<button>Go!!</button>
+			</a>
+		</td>
+	</tr>
+	<tr>
+	<!-- delete.html만들기 -> id 입력해서 전송 -->
+	<!-- delete.jsp만들기 -> 전송된 id 확인 -->
+		<td class="t1">회원탈퇴</td>
+		<td>
+			<a href="delete.html">
+				<button>Go!!</button>
+			</a>
+		</td>
+	</tr>
+	<tr>
+	<!-- update.html만들기 -> id, tel 입력해서 전송 -->
+	<!-- update.jsp만들기 -> 전송된 id, tel 확인 -->
+		<td class="t1">회원수정</td>
+		<td>
+			<a href="update.html">
+				<button>Go!!</button>
+			</a>
+		</td>
+	</tr>
+	<tr>
+		<td class="t1">회원검색(한명)</td>
+		<td>
+			<a href="one.html">
+				<button>Go!!</button>
+			</a>
+		</td>
+	</tr>
+	<tr>
+		<td class="t1">회원전체목록</td>
+		<td>
+			<a href="list.html">
+				<button>Go!!</button>
+			</a>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
