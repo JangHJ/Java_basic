@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body { /* 컨트롤 + / - 자동주석, 태그선택! */
+	background: #037BFC;
+}
+
+button {
+	background: #18DE02;
+}
+
+.t1 { /* .은 클래스 선택!, 여러개선택!  */
+	background: yellow;
+	width: 150px;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<h3>개인정보 검색(상세) 페이지</h3>
+	<hr>
+	<a href="bbs.html">
+		<button id="b1">첫페이지로</button>
+	</a>
+<hr>
+<!--a태그는 무조건 get방식 요청 -->
+<a href="http://localhost:8888/web00/one.jsp?id=apple2">
+	<button style="background: pink">apple2</button>
+</a>
+<a href="http://localhost:8888/web00/one.jsp?id=apple3">
+	<button style="background: pink">apple3</button>
+</a>
+<a href="http://localhost:8888/web00/one.jsp?id=spring">
+	<button style="background: pink">spring</button>
+</a>
+<hr>
+
+<form action="one.jsp" method="get">
+<table border="1">
+			<tr>
+				<td class="t1">검색할 아이디 :</td>
+				<td><input name="id"></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t1">
+					<button id="b2">검색할 id 데이터 전송</button>
+				</td>
+			</tr>
+		</table>
+</form>
+
+</body>
+</html>
