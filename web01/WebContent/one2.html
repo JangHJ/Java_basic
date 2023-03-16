@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//alert('회원탈퇴 페이지입니다.')
+</script>
+<style type="text/css">
+body { /* 컨트롤 + / - 자동주석, 태그선택! */
+	background: #95eced;
+}
+
+button {
+	background: pink;
+}
+
+.t1 { /* .은 클래스 선택!, 여러개선택! */
+	background: yellow;
+	width: 150px;
+	text-align: center;
+}
+
+#b1 { /* #은 아이디 선택!, 특정한 것 한개만 선택!  */
+	color: red;
+}
+
+#b2 { /* #은 아이디 선택!, 특정한 것 한개만 선택!  */
+	color: blue;
+}
+</style>
+</head>
+<body>
+	<h3>게시글 상세 검색페이지</h3>
+	<hr>
+	<a href="bbs.html">
+		<button id="b1">게시판 정보페이지로</button>
+	</a>
+	<hr>
+	<!--a태그는 무조건 get방식 요청 -->
+	<a href="http://localhost:8888/web00/one2.jsp?no=1">
+		<button>1번 게시물</button>
+	</a>
+	<a href="http://localhost:8888/web00/one2.jsp?no=2">
+		<button>2번 게시물</button>
+	</a>
+	<a href="http://localhost:8888/web00/one2.jsp?no=3">
+		<button>3번 게시물</button>
+	</a>
+	<hr>
+	<form action="one2.jsp">
+		<table border="1">
+			<tr>
+				<td class="t1">검색할 번호 :</td>
+				<td><input name="no"></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t1">
+					<button id="b2">게시판 검색할 no 데이터 전송</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
