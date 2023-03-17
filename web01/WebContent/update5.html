@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//alert('회원수정 페이지입니다.')
+</script>
+<style type="text/css">
+body { /* 컨트롤 + / - 자동주석, 태그선택! */
+	background: #95eced;
+}
+
+button {
+	background: pink;
+}
+
+.t1 { /* .은 클래스 선택!, 여러개선택! */
+	background: yellow;
+	width: 150px;
+	text-align: center;
+}
+
+#b1 { /* #은 아이디 선택!, 특정한 것 한개만 선택!  */
+	color: red;
+}
+#b2 { /* #은 아이디 선택!, 특정한 것 한개만 선택!  */
+	color: blue;
+}
+</style>
+</head>
+<body>
+	<h3>성적과목 수정 페이지</h3>
+	<hr>
+	<a href="grade.html">
+		<button id="b1">성적 정보 페이지로</button>
+	</a>
+	<form action="update5.jsp">
+		<table border="1">
+			<tr>
+				<td class="t1">수정할 id :</td>
+				<td><input name="id"></td>
+			</tr>
+			<tr>
+				<td class="t1">수정할 과목이름 :</td>
+				<td><input name="subject"></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t1">
+					<button id="b2">성적 수정 데이터 전송</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
