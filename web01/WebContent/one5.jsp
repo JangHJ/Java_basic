@@ -18,7 +18,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-당신이 검색을 원하는 영화 id는 <%= id %>
+당신이 검색을 원하는 성적 id는 <%= id %>
 <hr color="red">
  <table class="table table-striped table-hover">
  	<tr>

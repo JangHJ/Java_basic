@@ -31,7 +31,7 @@ button {
 </style>
 </head>
 <body>
-	<h3>게시글 상세 검색페이지</h3>
+	<h3>성적 상세 검색페이지</h3>
 	<hr>
 	<a href="grade.html">
 		<button id="b1">성적 정보페이지로</button>
@@ -57,6 +57,34 @@ button {
 			<tr>
 				<td colspan="2" class="t1">
 					<button id="b2">검색할 성적 id 데이터 전송</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<hr color=red>
+	<form action="list55.jsp">
+		<table border="1">
+			<tr>
+				<td class="t1">검색할 과목이름(Korean, English, Math, Science, History) :</td>
+				<td><input name="subject"></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t1">
+					<button id="b2">검색할 과목이름 데이터 전송</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<hr color=red>
+	<form action="list555.jsp">
+		<table border="1">
+			<tr>
+				<td class="t1">검색할 id (입력값부터 3개 더 출력) :</td>
+				<td><input name="id"></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t1">
+					<button id="b2">검색할 id 데이터 전송</button>
 				</td>
 			</tr>
 		</table>

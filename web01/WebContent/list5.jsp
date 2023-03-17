@@ -4,6 +4,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
+	String sub = request.getParameter("subject"); 
+
 	GradeDAO dao = new GradeDAO();
 	//5,6)dao가 리턴한 GradeVO가 들어간 ArrayList를 받는다. 
 	ArrayList<GradeVO> list = dao.list();
@@ -32,7 +34,7 @@ a {
 </style>
 <body>
 	<hr color="red">
-	<h4><b>등록된 성적 개수 <%= list.size() %>개</b></h4>
+	<h4><b>검색된 성적 개수 <%= list.size() %>개</b></h4>
 	<% if(list.size() > 0) {%>
 	<table class="table table-dark table-striped">
 		<tr>
@@ -56,7 +58,7 @@ a {
 		<%
 			}
 		}else{ %>
-			<a href="Grade.html">
+			<a href="One5.html">
 				<button>이전 페이지로 돌아가기</button>
 			</a><br>
 			<h3>등록된 성적이 없습니다</h3>
