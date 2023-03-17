@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//alert('게시판 글쓰기 페이지입니다.')
+</script>
+<style type="text/css">
+body { /* 컨트롤 + / - 자동주석, 태그선택! */
+	background: #95eced;
+}
+
+button {
+	background: pink;
+}
+
+.t1 { /* .은 클래스 선택!, 여러개선택! */
+	background: yellow;
+	width: 150px;
+	text-align: center;
+}
+
+#b1 { /* #은 아이디 선택!, 특정한 것 한개만 선택!  */
+	color: red;
+}
+#b2 { /* #은 아이디 선택!, 특정한 것 한개만 선택!  */
+	color: blue;
+}
+</style>
+</head>
+<body>
+<!-- no, title, content, writer 게시판글쓰기 -->
+	<h3>성적 등록하기</h3>
+	<hr>
+	<a href="grade.html">
+		<button id="b1">첫페이지로</button>
+	</a>
+	<form action="insert5.jsp">
+		<table border="1">
+			<tr>
+				<td class="t1">id :</td>
+				<td><input name="id"></td>
+			</tr>
+			<tr>
+				<td class="t1">subject :</td>
+				<td><input name="subject"></td>
+			</tr>
+			<tr>
+				<td class="t1">score :</td>
+				<td><input name="score"></td>
+			</tr>
+			<tr>
+				<td class="t1">name :</td>
+				<td><input name="name"></td>
+			</tr>
+			<tr>
+				<td class="t1">img :</td>
+				<td><input name="img"></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t1">
+					<button id="b2">성적 등록 데이터 전송</button>
+				</td>
+			</tr>
+		</table>	
+	</form>
+</body>
+</html>
