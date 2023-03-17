@@ -18,7 +18,7 @@
 	
 	//dao에게 가방 전달하기
 	BbsDAO dao = new BbsDAO();
-	dao.insert2(bag);
+	dao.insert(bag);
 	
     %>
     <!-- 3. 브라우저에게 결과를 알려주기 위한 html코드가 미리 들어가 있음. -->
