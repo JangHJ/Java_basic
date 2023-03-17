@@ -50,17 +50,16 @@ public class ProductDAO { // CRUD
 
 			rs = ps.executeQuery(); // select문 전송시
 			System.out.println("4. SQL문 오라클로 보내기 성공.");
-			while (rs.next()) { // 검색결과가 있는지 여부는 rs.next()
-				// true이면 있다라는 의미, false이면 없다라는 의미
-				// 1. 검색겨로가가 있으면,
-				// System.out.println("검색결과 있음. 성공.");
-				// 2. 각 컬럼에서 값들을 꺼내오자.
+			while (rs.next()) { 
+				//1. 각 컬럼에 있는 값들을 추출
+				//2. 가방을 만들어서 추출한 값들을 넣어주기
+				//3. 컨테이너에 가방 넣기.
 				String id2 = rs.getString(1); // id
 				String name = rs.getString(2); // name
-				String content = rs.getString(3); // tel
-				String price = rs.getString(4); // tel
-				String company = rs.getString(5); // tel
-				String img = rs.getString(6); // tel
+				String content = rs.getString(3); // content
+				int price = rs.getInt(4); // price
+				String company = rs.getString(5); // company
+				String img = rs.getString(6); // img
 				// System.out.println( id2 + " "
 //									+ pw + " " 
 //									+ name + " " 
@@ -71,7 +70,7 @@ public class ProductDAO { // CRUD
 				bag.setId(id2);
 				bag.setName(name);
 				bag.setContent(content);
-				bag.setPrice(Integer.parseInt(price));
+				bag.setPrice(price);
 				bag.setCompany(company);
 				bag.setImg(img);
 
@@ -138,7 +137,7 @@ public class ProductDAO { // CRUD
 				String id2 = rs.getString(1); // id
 				String name = rs.getString(2); // name
 				String content = rs.getString(3); // content
-				String price = rs.getString(4); // price
+				int price = rs.getInt(4); // price
 				String company = rs.getString(5); // company
 				String img = rs.getString(6); // img
 				// 검색결과를 검색화면 UI부분을 주어야 함.
@@ -146,7 +145,7 @@ public class ProductDAO { // CRUD
 				bag.setId(id2);
 				bag.setName(name);
 				bag.setContent(content);
-				bag.setPrice(Integer.parseInt(price));
+				bag.setPrice(price);
 				bag.setCompany(company);
 				bag.setImg(img);
 			} else {
