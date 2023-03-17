@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body { /* 컨트롤 + / - 자동주석, 태그선택! */
+	background: #95eced;
+}
+
+button {
+	background: pink;
+}
+
+.t1 { /* .은 클래스 선택!, 여러개선택! */
+	background: yellow;
+	width: 150px;
+	text-align: center;
+}
+
+#b1 { /* #은 아이디 선택!, 특정한 것 한개만 선택!  */
+	color: red;
+}
+
+#b2 { /* #은 아이디 선택!, 특정한 것 한개만 선택!  */
+	color: blue;
+}
+</style>
+</head>
+<body>
+	<h3>성적 삭제 페이지</h3>
+	<hr>
+	<a href="grade.html">
+		<button id="b1">성적 정보페이지로</button>
+	</a>
+	<form action="delete5.jsp">
+		<table border="1">
+			<tr>
+				<td class="t1">성적을 삭제할 id : </td>
+				<td><input name="id"></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t1">
+					<button id="b2">성적 삭제할 id 데이터 전송</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
