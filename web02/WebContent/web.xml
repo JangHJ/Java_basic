@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>web01</display-name>
+  <!-- 어노테이션을 안쓰는 경우, 따로 web.xml에 서블릿을 등록함. -->
+  
+  <servlet> 
+  	<servlet-name>test</servlet-name>
+  	<servlet-class>multi.Test</servlet-class>
+  	<init-param>
+  		<param-name>no</param-name>
+  		<param-value>nononononononono</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>test</servlet-name>
+  	<url-pattern>/test.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- //@WebServlet("/Test")  -->
+  
+  <servlet> 
+  	<servlet-name>monday</servlet-name>
+  	<servlet-class>multi.Monday</servlet-class>
+  	<init-param>
+  		<param-name>temp</param-name>
+  		<param-value>good</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>monday</servlet-name>
+  	<url-pattern>/monday2.do</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>main.html</welcome-file>
+    <welcome-file>main.jsp</welcome-file>
+   </welcome-file-list>
+</web-app>
