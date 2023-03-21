@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#user{
+	background: yellow;
+}
+#b1{
+	background: pink;
+	color: blue;
+}
+#b2{
+	background: lime;
+	color: white;
+}
+</style>
+<script type="text/javascript">
+	function idcheck() {
+		//아이디 입력한 값 가지고 오기 
+		idValue = document.getElementById("idValue").value
+		//alert('아이디는 ' + idValue)
+		//id가 result인 태그를 가지고 와라 <div id=result></div>mentById("user").value
+		resultTag = document.getElementById("result")
+		if (idValue.length >= 5) {
+			alert('가입 가능합니다!')
+			resultTag.innerHTML = '가입 가능합니다<img src=img/yes.jpg width=300 height=200>'			
+		} else {
+			alert('가입 불가능합니다!')
+			resultTag.innerHTML = '가입 불가능합니다<img src=img/no.jpg width=300 height=200>'		
+		}
+	}
+	function pwcheck() {
+		//패스워드1,2 입력한 값 가지고 오기 
+		pw = document.getElementById("pw").value
+		pw2 = document.getElementById("pw2").value
+		
+		//id가 result인 태그를 가지고 와라 <div id=result></div>mentById("user").value
+		resultTag = document.getElementById("result")
+		
+		if(pw == pw2)
+		{
+			alert('일치합니다!')
+			resultTag.innerHTML = '일치<img src=img/ok.jpg width=300 height=200>'
+			//location.href = "http://www.naver.com" //일치한다면 해당사이트로 넘어감
+		}
+		else{
+			alert('일치하지 않습니다!')
+			resultTag.innerHTML = '불일치<img src=img/no.jpg width=300 height=200>'
+			//location.href = "http://www.google.com" //일치하지 않는다면 해당사이트로 넘어감
+		}
+	}
+</script>
+
+</head>
+<body>
+<h2>자바 스크립트 테스트</h2>
+<hr>
+아이디 : <input id="idValue" value="test">
+<button id="b1" onclick="idcheck()">글자수 체크</button><br>
+패스워드 : <input id="pw" value="test"> <br>
+패스워드2 : <input id="pw2" value="test">
+<button id= "b2" onclick="pwcheck()">패스워드 동일</button><br>
+<hr>
+<div id="result" style="color:red; background: yellow;
+	width: 500px; height: 50px; font-size: 30px">결과넣는 곳.</div>
+</body>
+</html>
