@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#user{
+	background: yellow;
+}
+#b1{
+	background: pink;
+	color: blue;
+}
+#b2{
+	background: lime;
+	color: white;
+}
+</style>
+<script type="text/javascript">
+	function bag() {
+		//가방안에 들어있는 물건 중 제일 중요한 것
+		important1 = document.getElementById("important1").value
+		
+		resultTag = document.getElementById("result")
+		if (important1 == "휴대폰") {
+			resultTag.innerHTML = '<img src=img/phone.png width=150 height=300><br>'			
+		} else if(important1 == "시계"){
+			resultTag.innerHTML = '<img src=img/watch.png width=150 height=300><br>'
+		} else {
+			resultTag.innerHTML = '<img src=img/ok.jpg width=300 height=200><br>'
+		}
+	}
+	function bag2() {
+		//가방안에 들어있는 물건 중 제일 중요한 것
+		important2 = document.getElementById("important2").value
+		
+		resultTag = document.getElementById("result")
+		if (important2 == "시계") {
+			location.href = "https://www.musinsa.com/search/musinsa/integration?q=%EC%8B%9C%EA%B3%84&type="; //시계판매사이트로 넘어가기
+		} else if(important2 == "가방"){
+			location.href = "https://www.musinsa.com/search/musinsa/integration?type=&q=%EA%B0%80%EB%B0%A9"; //가방판매사이트로 넘어가기
+		}
+	}
+</script>
+
+</head>
+<body>
+<h2>자바 스크립트 테스트</h2>
+<hr>
+가방안에 들어있는 물건 중 제일 중요한 것 : <input id="important1" value="휴대폰">
+<button id="b1" onclick="bag()">확인</button><br>
+가방안에 들어있는 물건 중 두번째 중요한 것 : <input id="important2" value="시계">
+<button id="b2" onclick="bag2()">확인</button><br>
+<hr>
+<div id="result" style="font-size: 30px"></div>
+</body>
+</html>
