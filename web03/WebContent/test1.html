@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#user{
+	background: yellow;
+}
+#b1{
+	background: pink;
+	color: blue;
+}
+#b2{
+	background: lime;
+	color: white;
+}
+</style>
+<script type="text/javascript">
+	function me() {
+		//아이디 입력한 값 가지고 오기 
+		name = document.getElementById("name").value
+		company = document.getElementById("company").value
+		position = document.getElementById("position").value
+		gender = document.getElementById("gender").value
+		
+		resultTag = document.getElementById("result")
+		if (gender == "남자") {
+			resultTag.innerHTML = '<img src=img/male.png width=150 height=300><br>' + company + '회사에 ' + position + '으로 있는 ' + name + '입니다.'			
+		} else {
+			resultTag.innerHTML = '<img src=img/female.png width=150 height=300><br>' + company + '회사에 ' + position + '으로 있는 ' + name + '입니다.'			
+		}
+	}
+</script>
+
+</head>
+<body>
+<h2>자바 스크립트 테스트</h2>
+<hr>
+이름 : <input id="name" value="홍길동"><br>
+회사명 : <input id="company" value="멀티"><br>
+직책 : <input id="position" value="팀장"><br>
+성별 : <select name='genders' id='gender'>
+	<option value="여자">여자</option>
+	<option value="남자">남자</option>
+</select><br>
+<button id="b1" onclick="me()">확인</button><br>
+<hr>
+<div id="result" style="font-size: 30px"></div>
+</body>
+</html>
