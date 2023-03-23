@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() {	//jquery 기본 사용법
+		//alert("body부분을 dom tree로 ram에 읽어들였음.!!")
+		//document.getElementById("today") ==> $("#today")
+		$("#b1").click(function() {
+			alert('b1이 클릭되었음.')
+		})
+	})
+</script>
+</head>
+<body>
+오늘 요일 : <input id="today" value="목">
+<button id="b1">주말인지 확인..</button>
+</body>
+</html>
