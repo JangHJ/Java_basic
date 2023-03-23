@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	//시작하자 마자 통신해보자.!!
+	$(function() {
+		$('#b1').click(function() {
+			$.ajax({
+				url: "money.jsp", 
+				data : {
+					money : $('#money').val(),
+					choice : $('#choice').val()
+				},
+				success : function(x) {
+					alert("통신 성공!")
+					$('#result').html("<font color=red>결제결과는 " + x + "</font>")
+				}, 
+				error : function(e) {
+					
+				}
+			}) //ajax
+		}) //b1
+		
+		$('#b2').click(function() {
+			$.ajax({
+				url: "idCheck.jsp", 
+				data : {
+					id : $('#id').val()
+				},
+				success : function(x) {
+					alert(x)
+					$('#result').html("<font color=red>" + x + "</font>")
+					x2 = x.trim()
+				}, 
+				error : function(e) {
+					
+				}
+			}) //ajax
+		}) //b2
+		
+		$('#b3').click(function() {
+			$.ajax({
+				url: "tel.jsp", 
+				data : {
+					tel : $('#tel').val()
+				},
+				success : function(x) {
+					alert(x)
+					$('#result').html("<font color=red>" + x + "</font>")
+					x2 = x.trim()
+				}, 
+				error : function(e) {
+					
+				}
+			}) //ajax
+		}) //b2
+		
+	
+	})//$
+</script>
+<body>
+결제금액 : <input id="money" class="text-bg-primary" value="1000"> <br>
+1)계좌이체 2)신용카드 3)휴대폰결제<br>
+결제수단 : <input  id="choice" value ="1" class="text-bg-primary"><button id="b1" style="background: lime">결제하기</button> <br>
+
+<hr color="red">
+회원가입할 id입력: <input id="id"  class="text-bg-primary" value="root"> 
+<button  id="b2"  style="background: yellow">회원가입시 id중복 체크</button> <br>
+
+<hr color="red">
+인증받을 전화번호입력: <input id="tel"  class="text-bg-primary" value="01033335555"> 
+<button  id="b3" style="background: orange;">인증번호 받기</button> <br>
+<hr color="green">
+<div id="result" class="badge rounded-pill bg-info">결과 출력되는 곳.</div>
+</body>
+</html>
