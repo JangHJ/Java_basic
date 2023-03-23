@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() { //body태그 부분을 ram에 dom tree로 읽어와서 준비가 되면, 
+		//function함수 부분을 실행해주세요.!
+		//$(선택하는 것)-- 태그명 button, 아이디 #b1, 클래스 .t2 
+		$('#b1').click(function() {
+			//태그 사이의 글자가 있는 경우와 input태그의 값이 있는 경우는 다르다!
+			t1 = $('#food').val()
+			t2 = $('#where').val()
+			alert('당신이 먹고 싶은 음식은 ' + t1 + '이고, 가고 싶은 곳은 ' + t2 + '군요.')
+		})		
+		$('#b2').click(function() {
+			s = $('#site').val()
+			if (s == 'movie') {
+				location.href = "http://cgv.co.kr"
+			} else {
+				location.href = "http://www.15881588.com/condo/sub_tab.html?goods_no=859&def_pno=8889"
+			}
+		}) //b2	
+	})
+</script>
+</head>
+<body>
+<h3>먹고 싶은 음식</h3>
+<input id="food" value="커피" style="background: pink"><br>
+<h3>가고 싶은 곳</h3>
+<input id="where" value="바다" style="background: lime"><br>
+<hr>
+<button id="b1">확인</button>
+<h3 id="text1">결과 확인창</h3><br>
+<hr color="red">
+현재 제일 내가 많이 들어가는 사이트 <input id="site" value="naver" style="background: yellow"><br>
+<button id="b2">나를 눌러라-2</button>
+</body>
+</html>
