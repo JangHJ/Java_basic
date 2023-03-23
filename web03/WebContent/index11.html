@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() { //body태그 부분을 ram에 dom tree로 읽어와서 준비가 되면, 
+		//function함수 부분을 실행해주세요.!
+		//$(선택하는 것)-- 태그명 button, 아이디 #b1, 클래스 .t2 
+		$('#b1').click(function() {
+			//태그 사이의 글자가 있는 경우와 input태그의 값이 있는 경우는 다르다!
+			re = $('#reply').val()
+			divTag = $('#result') //태그를 가져온다
+			
+			divTag.append(re + "<br>")
+		})
+		$('#b2').click(function() {
+			divTag = $('#result')
+			divTag.append("<img src='img/icon.png' width='50' height='50'>")
+		}) //b2
+		$('#b3').click(function() {
+			re = $('#reply').val()
+			divTag = $('#result')
+			divTag.append("<img src='img/icon.png' width='50' height='50'><br>")
+			divTag.append(re + "<br>")
+		}) //b1
+	})
+</script>
+</head>
+<body>
+댓글 : <input id="reply" style="background: pink" value="오늘 날이 추워.">
+<button id="b1">글자추가</button>
+<button id="b2">이미지추가</button>
+<button id="b3">댓글추가</button>
+<hr color="red">
+<div id="result"></div>
+</body>
+</html>
