@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<result2>
+	<winner>
+		<year>2021</year>
+		<class>1</class>
+		<name>hong</name>
+		<field>runner</field>
+	</winner>
+	<winner>
+		<year>2022</year>
+		<class>2</class>
+		<name>kim</name>
+		<field>bike</field>
+	</winner>
+</result2>
