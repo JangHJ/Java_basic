@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() { 
+		
+		$('#b1').click(function() {
+			$.ajax({
+				url: "data/dataset2.xml",
+				success: function(doc) {
+					alert("mock2 xml 요청 성공!>> " + doc)
+					list = $(doc).find('member')
+					for(j=0; j<list.length; j++)
+					{
+						id = $(list[j]).find('id').text()
+						user= $(list[j]).find('user').text()
+						pw= $(list[j]).find('pw').text()
+						gender = $(list[j]).find('gender').text()
+						email = $(list[j]).find('email').text()
+						$('#result').append(id + ", " +
+											user + ", " +
+											pw + ", " +
+											gender + ", " +
+											email + "<br>")
+						$.ajax({
+							url: "mock2.jsp",
+							async: "false", //비동기 기능끄기 -> 순서대로 처리됨.
+							data : {
+								id : id,
+								user : user,
+								pw : pw,
+								gender : gender,
+								email : email
+							}, 
+							success: function() {
+								console.log('넣기 성공~!')
+							} //success
+						}) //ajax
+					}//for
+				}//success
+			}) //ajax
+		}) //b3
+	}) //$
+</script>
+</head>
+<body bgcolor="lime">
+<button style='color: blue; background: pink' id ="b1">Mock2 XML받아와서 DB에 넣어주기</button>
+<hr color="red">
+<div id="result"></div>
+</body>
+</html>
