@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() { 
+		$('#b1').click(function() {
+			$.ajax({
+				url: "data/rank.xml",
+				success: function(doc) {
+					alert("xml요청 성공>> " + doc)
+					list = $(doc).find('rank') //find의 결과는 여러개(배열)
+					alert(list.length)
+					for(i = 0; i < list.length; i++){
+						name = $(list[i]).find('name').text()
+						tel = $(list[i]).find('tel').text()
+						$('#result').append(name + ", " + tel + "<br>")
+					}
+				}
+			})
+		})
+		
+		$('#b2').click(function() {
+			$.ajax({
+				url: "data/rank2.xml",
+				success: function(doc) {
+					alert("xml2 요청 성공!>> " + doc)
+					list = $(doc).find('winner')
+					for(j=0; j<list.length; j++)
+					{
+						year = $(list[j]).find('year').text()
+						cs = $(list[j]).find('class').text()
+						name = $(list[j]).find('name').text()
+						field = $(list[j]).find('field').text()
+						$('#result').append(year + ", " + cs + ", "
+								+ name + ", " + field + "<br>")
+					}
+				}
+			}) //ajax
+		}) //b2
+		
+		$('#b3').click(function() {
+			$.ajax({
+				url: "data/dataset.xml",
+				success: function(doc) {
+					alert("xml3 요청 성공!>> " + doc)
+					list = $(doc).find('record')
+					for(j=0; j<list.length; j++) //row 200개가 한계인듯
+					{
+						id = $(list[j]).find('id').text()
+						first_name = $(list[j]).find('first_name').text()
+						last_name = $(list[j]).find('last_name').text()
+						email = $(list[j]).find('email').text()
+						gender = $(list[j]).find('gender').text()
+						address = $(list[j]).find('address').text()
+						$('#result').append(id + ", " +
+											first_name + ", " +
+											last_name + ", " +
+											email + ", " +
+											gender + ", " +
+											address + "<br>")
+						//받은 데이터를 추출해서 db에 저장해두고 싶은 경우
+						//브라우저--> 웹서버--> db
+						//받은 데이터를 웹서버에게 넘겨주면 됨.
+						//비동기 통신이 필요!
+						//jsp를 호출해서 데이터 받아서 db에 넣어달라는 요청
+						$.ajax({
+							url: "mock.jsp",
+							async: "false", //비동기 기능끄기 -> 순서대로 처리됨.
+							data : {
+								id : id,
+								first_name : first_name,
+								last_name : last_name,
+								email : email,
+								gender : gender,
+								address : address
+							}, 
+							success: function() {
+								console.log('넣기 성공~!')
+							} //success
+						}) //ajax
+					}//for
+				}//success
+			}) //ajax
+		}) //b3
+	}) //$
+</script>
+</head>
+<body bgcolor="lime">
+<button style='color: blue; background: pink' id ="b1">XML받아오기-1</button>
+<button style='color: blue; background: yellow' id ="b2">XML받아오기-2</button>
+<button style='color: blue; background: lightblue' id ="b3">XML받아오기-3</button>
+<hr color="red">
+<div id="result"></div>
+</body>
+</html>
