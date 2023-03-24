@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() { 
+		$('#b1').click(function() {
+			$('#result').empty() //기존 result에 있던 내용 지우기
+			$.ajax({
+				url: "data/rank.json",
+				success: function(doc) {
+					list = doc.rank
+					alert(list.length)
+					for(i = 0; i < list.length; i++){
+						n = list[i].name
+						t = list[i].tel
+						$('#result').append(n + ",  " + t + "<br>")
+					}//for
+				}//success
+			})//ajax
+		})//b1
+		
+		$('#b2').click(function() {
+			$('#result').empty() //기존 result에 있던 내용 지우기
+			$.ajax({
+				url: "data/MOCK_DATA.json",
+				success: function(doc) {
+					list = doc
+					alert(list.length)
+					for(i = 0; i < list.length; i++){
+						id = list[i].id
+						email = list[i].email
+						$('#result').append(id + ",  " + email + "<br>")
+					}//for
+				}//success
+			})//ajax
+		})//b2
+		
+		$('#b3').click(function() {
+			$('#result').empty() //기존 result에 있던 내용 지우기
+			$.ajax({
+				url: "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.hankyung.com%2Ffeed%2Fhei.xml",
+				success: function(doc) {
+					alert('성공!')
+					list = doc.items
+					alert(list.length)
+					for(i=0; i<list.length; i++)
+					{
+						//console.log(list[i].title)
+						t = list[i].title
+						l = list[i].link
+						p = list[i].pubDate
+						a = list[i].author
+						$('#result').append("<a href=" + l + ">" + t + "</a>" + "<br>" + l + "<br>"  + p + "<br>" + a + "<br><hr color=red>")
+					}
+				}//success
+			})//ajax
+		})//b3
+		
+		//------------------------------------
+		
+		$('#b4').click(function() {
+			$('#result').empty() //기존 result에 있던 내용 지우기
+			$.ajax({
+				url: "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnews.sbs.co.kr%2Fnews%2FSectionRssFeed.do%3FsectionId%3D02%26plink%3DRSSREADER",
+				success: function(doc) {
+					//alert('성공!')
+					console.log('성공!')
+					list = doc.items
+					//alert(list.length)
+					$('#result').append("<h2>SBS뉴스 경제섹션</h2>")
+					for(i=0; i<list.length; i++)
+					{
+						//console.log(list[i].title)
+						img = list[i].thumbnail
+						t = list[i].title
+						l = list[i].link
+						p = list[i].pubDate
+						a = list[i].author
+						$('#result').append("<img src='" + img + "' width=350 height=200><br><a href=" + l + ">" + t + "</a>" + "<br>" + l + "<br>"  + p + "<br>" + a + "<br><hr color=red>")
+					}
+				}//success
+			})//ajax
+		})//b4
+		
+		$('#b5').click(function() {
+			$('#result').empty() //기존 result에 있던 내용 지우기
+			$.ajax({
+				url: "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnews.sbs.co.kr%2Fnews%2FSectionRssFeed.do%3FsectionId%3D14%26plink%3DRSSREADER",
+				success: function(doc) {
+					//alert('성공!')
+					console.log('성공!')
+					list = doc.items
+					//alert(list.length)
+					$('#result').append("<h2>SBS뉴스 연예섹션</h2>")
+					for(i=0; i<list.length; i++)
+					{
+						//console.log(list[i].title)
+						img = list[i].thumbnail
+						t = list[i].title
+						l = list[i].link
+						p = list[i].pubDate
+						a = list[i].author
+						$('#result').append("<img src='" + img + "' width=350 height=200><br><a href=" + l + ">" + t + "</a>" + "<br>" + l + "<br>"  + p + "<br>" + a + "<br><hr color=red>")
+					}
+				}//success
+			})//ajax
+		})//b5
+		
+		$('#b6').click(function() {
+			$('#result').empty() //기존 result에 있던 내용 지우기
+			$.ajax({
+				url: "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnews.sbs.co.kr%2Fnews%2FSectionRssFeed.do%3FsectionId%3D09%26plink%3DRSSREADER",
+				success: function(doc) {
+					//alert('성공!')
+					console.log('성공!')
+					list = doc.items
+					//alert(list.length)
+					$('#result').append("<h2>SBS뉴스 스포츠섹션</h2>")
+					for(i=0; i<list.length; i++)
+					{
+						//console.log(list[i].title)
+						img = list[i].thumbnail
+						t = list[i].title
+						l = list[i].link
+						p = list[i].pubDate
+						a = list[i].author
+						$('#result').append("<img src='" + img + "' width=350 height=200><br><a href=" + l + ">" + t + "</a>" + "<br>" + l + "<br>"  + p + "<br>" + a + "<br><hr color=red>")
+					}
+				}//success
+			})//ajax
+		})//b6
+	
+	}) //$
+</script>
+</head>
+<body bgcolor="lime">
+<button style='color: blue; background: pink' id ="b1">json받아오기-1</button>
+<button style='color: blue; background: yellow' id ="b2">json받아오기-2</button>
+<button style='color: blue; background: yellow' id ="b3">json받아오기-3</button>
+<hr>
+<button style='color: blue; background: pink' id ="b4">SBS(경제)</button>
+<button style='color: blue; background: yellow' id ="b5">SBS(연예)</button>
+<button style='color: blue; background: lightblue' id ="b6">SBS(스포츠)</button>
+
+<hr color="red">
+<div id="result"></div>
+</body>
+</html>
