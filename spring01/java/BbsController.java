@@ -1,7 +1,10 @@
 package com.multi.mvc01;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller //스프링에서 제어하는 역할로 등록! 
@@ -49,13 +52,18 @@ public class BbsController {
 	}
 	
 	@RequestMapping("one2.multi")
-	public void one(int no) {
+	public void one(int no, Model model) {
 		System.out.println("one2요청됨.");
 		System.out.println(no);
+		BbsVO bag = dao.one(no);
+		model.addAttribute("bag", bag);
 	}
 	
 	@RequestMapping("list2.multi")
-	public void list() {
+	public void list(Model model) {
+		System.out.println("list2요청됨.");
+		ArrayList<BbsVO> list = dao.list();
+		model.addAttribute("list", list);
 	}
 	
 	//https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%EC%9E%90%EB%8F%99%EC%B0%A8	

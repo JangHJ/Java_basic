@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Component;
 
-//import 화면DB연결.BbsVO;
 @Component
 public class BbsDAO { // CRUD
 
@@ -290,7 +289,7 @@ public class BbsDAO { // CRUD
 			result = ps.executeUpdate(); // 1
 			System.out.println("4. SQL문 오라클로 보내기 성공.");
 			if (result == 1) {
-				System.out.println("회원가입 성공!");
+				System.out.println("책 등록 성공!");
 			}
 			// System.out.println(result);
 		} catch (Exception e) {
