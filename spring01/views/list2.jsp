@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%><%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,18 +33,23 @@ th {
 </style>
 </head>
 <body>
-<h2>게시판 검색</h2>
+<h2>게시글 전체검색</h2>
 <table>
 <tr id="t1">
+<th>no</th>
 <th>title</th>
 <th>content</th>
 <th>writer</th>
 </tr>
+
+<c:forEach var="bag" items="${list}">
 <tr>
+<td>${bag.no}</td>
 <td>${bag.title}</td>
 <td>${bag.content}</td>
 <td>${bag.writer}</td>
 </tr>
+</c:forEach>
 </table>
 </body>
 </html>
