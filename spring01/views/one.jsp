@@ -12,6 +12,12 @@ body{
 </style>
 </head>
 <body>
-회원 하나 검색했습니다.
+<!-- 표현식(expression) -->
+<h3>회원 ${bag.id}을 검색했습니다.</H3>
+<!-- bag.getId() -->
+검색된 회원 id : ${bag.id}<br> <!-- 출력용 expression language-EL -->
+검색된 회원 pw : ${bag.pw}<br>
+검색된 회원 name : ${bag.name}<br>
+검색된 회원 tel : ${bag.tel}<br>
 </body>
 </html>
