@@ -18,6 +18,15 @@ td, th {
   border: 1px solid #ddd;
   padding: 8px;
 }
+a{
+	text-decoration-line: none;
+}
+a:link{
+	color: black;
+}
+a:visited{
+	color: darkgray;
+}
 
 tr:nth-child(even){background-color: #f2f2f2;}
 
@@ -43,9 +52,9 @@ th {
 
 <c:forEach var="bag" items="${list}">
 <tr>
-<td>${bag.name}</td>
-<td>${bag.url}</td>
-<td>${bag.img}</td>
+<td><a href="one3.multi?id=${bag.id}">${bag.name}</td>
+<td><a href="${bag.url}">${bag.url}</td>
+<td><img src="resource/img/${bag.img}"></td>
 </tr>
 </c:forEach>
 

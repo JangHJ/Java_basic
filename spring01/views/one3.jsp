@@ -43,7 +43,7 @@ th {
 <tr>
 <td>${bag.name}</td>
 <td>${bag.url}</td>
-<td>${bag.img}</td>
+<td><img src="resources/img/${bag.img}" width=300></td>
 </tr>
 </table>
 <!-- 
