@@ -1,5 +1,7 @@
 package com.multi.mvc01;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -79,9 +81,11 @@ public class MemberController {
 		//bag에 검색결과 다 들어있음.
 	}
 	
-	@RequestMapping("list")
-	public void list() {
-		
+	@RequestMapping("list.multi")
+	public void list(Model model) {
+		System.out.println("list요청됨.");
+		ArrayList<MemberVO> list = dao.list();
+		model.addAttribute("list", list);
 	}
 	//https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%EC%9E%90%EB%8F%99%EC%B0%A8
 }
