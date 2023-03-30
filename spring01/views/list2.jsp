@@ -1,3 +1,5 @@
+<%@page import="com.multi.mvc01.BbsVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%><%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -41,15 +43,30 @@ th {
 <th>content</th>
 <th>writer</th>
 </tr>
+<% 
+	ArrayList<BbsVO> list = (ArrayList<BbsVO>)request.getAttribute("list");
+    for(BbsVO bag: list){
+%>
+<tr>
+	<td class="down"><%= bag.getNo() %></td>
+	<td class="down">
+		<a href="one2.multi?no=<%= bag.getNo() %>"><%= bag.getTitle() %></a>
+	</td>
+	<td class="down"><%= bag.getContent() %></td>
+	<td class="down"><%= bag.getWriter() %></td>
+</tr>
+<% } %>
 
+<!--
 <c:forEach var="bag" items="${list}">
 <tr>
 <td>${bag.no}</td>
-<td>${bag.title}</td>
+<td><a href="one2.multi?no=${bag.no}">${bag.title}</a></td>
 <td>${bag.content}</td>
 <td>${bag.writer}</td>
 </tr>
-</c:forEach>
+</c:forEach>-->
+
 </table>
 </body>
 </html>

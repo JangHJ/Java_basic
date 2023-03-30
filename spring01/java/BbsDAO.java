@@ -42,7 +42,7 @@ public class BbsDAO { // CRUD
 			// SQL부품으로 만들어주어야 함.
 			// PreparedStatement가 SQL부품!!
 
-			String sql = "select * from bbs";
+			String sql = "select * from bbs order by no";
 			PreparedStatement ps = con.prepareStatement(sql); // PreparedStatement
 			// 삭제!!!! ps.setString(1, id);
 			System.out.println("3. SQL문 부품(객체)으로 만들어주기 성공.");
