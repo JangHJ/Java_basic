@@ -21,12 +21,14 @@ hr{
 }
 </style>
 <body>
+현재 게시물 조회수 : ${count}
+<% if(session.getAttribute("id") != null){ %>
 <h3>게시글 등록</h3>
 <form action="insert2.multi" method="get">
 	no : <input name="no" value=6><br>
 	title : <input name="title" value="good"><br>
 	content : <input name="content" value="good day"><br>
-	writer : <input name="writer" value="apple"><br>
+	writer : <input name="writer" value=${id}><br>
 	<button onclick="alert('insert2가 요청됨!');" type="submit">등록하기</button>
 </form>
 <hr>
@@ -45,7 +47,11 @@ hr{
 	<button onclick="alert('delete2가 요청됨!');" type="submit">삭제하기</button>
 </form>
 <hr>
-
+<%}else { %>
+<a href="login.jsp">
+	<button style="background: pink" >로그인 화면으로 go</button>
+</a><br>
+<%} %>
 <h3>게시글 검색</h3>
 <form action="one2.multi" method="get">
 	no : <input name="no" value=6><br>
@@ -58,6 +64,5 @@ hr{
 	<button onclick="alert('list2가 요청됨!');" type="submit">전체 검색</button>
 </form>
 <hr>
-
 </body>
 </html>
