@@ -8,10 +8,10 @@
 </head>
 <body>
 <%
-if(session.getAttribute("views") == null){
+if(session.getAttribute("view") == null){
 	out.print("아무도 방문하지 않았습니다.");
 }else{
-	out.print("조회수 : " + session.getAttribute("views"));
+	out.print("조회수 : " + session.getAttribute("view"));
 }
 %>
 </body>

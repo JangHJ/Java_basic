@@ -8,7 +8,7 @@
 </head>
 <body>
 <%
-	session.setAttribute("views", 100);
+	session.setAttribute("view", 100);
 %>
 <hr>서버에 세션 속성등록함.
 <a href="page04.jsp">page04.jsp</a>
