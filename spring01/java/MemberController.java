@@ -2,6 +2,8 @@ package com.multi.mvc01;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,17 +18,20 @@ public class MemberController {
 	//회원가입, 수정, 탈퇴, 정보검색
 	
 	@RequestMapping("login")
-	public String login(MemberVO bag){
+	public String login(MemberVO bag, HttpSession session){
 		System.out.println(bag);
 		//dao를 이용해서 db처리할 예정.
 		//views아래로 넘어가게 되어있음.
 		//views아래 login.jsp를 호출.
 		int result = dao.login(bag);
-		if(result == 1)
+		if(result == 1) {
+			//로그인 성공하면, 세션을 잡아두자
+			session.setAttribute("id", bag.getId());
 			return "ok"; //views아래 파일이름.jsp
-		else
+		}else {
 			return "redirect:member.jsp";
-		//다음 결과를 담을 jsp파일명을 스프링프로그램에 알려주기.
+			//다음 결과를 담을 jsp파일명을 스프링프로그램에 알려주기.
+		}
 	}
 	
 	//클래스 내에서 기능처리 담당
