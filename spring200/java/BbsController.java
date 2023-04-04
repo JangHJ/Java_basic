@@ -33,10 +33,12 @@ public class BbsController {
 	}
 	
 	@RequestMapping("delete2.multi")
-	public void delete(int no) {
+	public void delete(int no, Model model) {
 		System.out.println("delete2요청됨.");
 		System.out.println(no);
 		dao.delete(no);
+		ArrayList<BbsVO> list = dao.list();
+		model.addAttribute("list", list);
 	}
 	
 	@RequestMapping("one2.multi")
@@ -56,6 +58,24 @@ public class BbsController {
 		ArrayList<BbsVO> list = dao.list();
 		model.addAttribute("list", list);
 	}
+
+	@RequestMapping("list5")
+	public void list5(Model model) {
+		System.out.println("list5요청됨.");
+		ArrayList<BbsVO> list = dao.list();
+		System.out.println(list.size());
+		model.addAttribute("list", list);
+	}
 	
-	//https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%EC%9E%90%EB%8F%99%EC%B0%A8	
+	@RequestMapping("one6")
+	public void one6(int no, Model model) {
+		System.out.println("one6요청됨.");
+		System.out.println(no);
+		BbsVO bag = dao.one(no);
+		//bbs상세페이지 만들 때, reply list도 함께 가지고 와야함.
+		ArrayList<ReplyVO> list = dao2.list(no);		
+		model.addAttribute("list", list);
+		model.addAttribute("bag", bag);
+	}
+	
 }
