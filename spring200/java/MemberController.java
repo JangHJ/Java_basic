@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller //스프링에서 제어하는 역할로 등록! dependency
 public class MemberController {
@@ -84,11 +85,30 @@ public class MemberController {
 	}
 	
 	
+	@RequestMapping("one33")
+	@ResponseBody
+	public MemberVO one33(String id) {
+		System.out.println("one33요청됨.");
+		System.out.println(id);
+		MemberVO bag = dao.one(id);
+		//검색결과 있는지 프린트
+		System.out.println(bag);
+		return bag;
+	}
+	
 	@RequestMapping("list")
 	public void list(Model model) {
 		//Model은 컨트롤러의 list를 views/list.jsp까지만 전달할 수 있는 객체 
 		ArrayList<MemberVO> list = dao.list();
 		model.addAttribute("list", list);
+	}
+	
+	@RequestMapping("list66")
+	@ResponseBody
+	public ArrayList<MemberVO> list66() {
+		ArrayList<MemberVO> list = dao.list();
+		System.out.println(list.size()); 
+		return list;
 	}
 	
 	//https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%EC%9E%90%EB%8F%99%EC%B0%A8
