@@ -1,32 +1,26 @@
 package com.multi.mvc200;
 
 public class MapVO {
-	String place;
-	double lati;
-	double longi;
-	
-	
-	public String getPlace() {
-		return place;
+	double lat;
+	double lon;
+
+	public double getLat() {
+		return lat;
 	}
-	public void setPlace(String place) {
-		this.place = place;
+	public void setLat(double lat) {
+		this.lat = lat;
 	}
-	public double getLati() {
-		return lati;
+	public double getLon() {
+		return lon;
 	}
-	public void setLati(double lati) {
-		this.lati = lati;
-	}
-	public double getLongi() {
-		return longi;
-	}
-	public void setLongi(double longi) {
-		this.longi = longi;
+	public void setLon(double lon) {
+		this.lon = lon;
 	}
 	
 	@Override
 	public String toString() {
-		return "MapVO [place=" + place + ", lati=" + lati + ", longi=" + longi + "]";
+		return "MapVO [lat=" + lat + ", lon=" + lon + "]";
 	}
+	
+	
 }

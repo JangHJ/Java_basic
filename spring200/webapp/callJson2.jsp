@@ -100,7 +100,7 @@
 					content1 = json[0].content
 					writer1 = json[0].writer
 					
-					no2 = json.no
+					no2 = json[1].no
 					title2 = json[1].title
 					content2 = json[1].content
 					writer2 = json[1].writer

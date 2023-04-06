@@ -2,7 +2,6 @@ package com.multi.mvc200;
 
 import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -64,10 +63,10 @@ public class RestController {
 		bag.setWriter("apple");
 		
 		BbsVO bag2 = new BbsVO();
-		bag.setNo(3);
-		bag.setTitle("HiHi!");
-		bag.setContent("byebyebyebye!");
-		bag.setWriter("apple");
+		bag2.setNo(3);
+		bag2.setTitle("HiHi!");
+		bag2.setContent("byebyebyebye!");
+		bag2.setWriter("apple");
 		
 		ArrayList<BbsVO> list = new ArrayList<BbsVO>();
 		list.add(bag);
@@ -76,22 +75,36 @@ public class RestController {
 		return list; 
 	}
 	
-	@RequestMapping("map1")
+	@RequestMapping("jsonResponse5")
 	@ResponseBody //요청을 받으면 return되는 데이터를 json으로 만들어서 요청하는 곳으로 다시 보냄.
-	public MapVO map1() {
+	public MapVO json5() {
 		MapVO bag = new MapVO();
-		bag.setPlace("미사역");
-		bag.setLati(37.563118);
-		bag.setLongi(127.192932);
+		bag.setLat(37.563118);
+		bag.setLon(127.192932);
 		
 		return bag;
 	}
 
-	@RequestMapping("chart1")
+	@RequestMapping("jsonResponse6")
 	@ResponseBody //요청을 받으면 return되는 데이터를 json으로 만들어서 요청하는 곳으로 다시 보냄.
-	public ChartVO chart1() {
-		ChartVO bag = new ChartVO();
+	public ArrayList<ChartVO> json6() {
+		ArrayList<ChartVO> list = new ArrayList<ChartVO>();
 		
-		return bag;
+		ChartVO vo = new ChartVO();
+		vo.setWork("study!");
+		vo.setTime(10);
+		list.add(vo);
+		
+		ChartVO vo2 = new ChartVO();
+		vo2.setWork("run!");
+		vo2.setTime(5);
+		list.add(vo2);
+		
+		ChartVO vo3 = new ChartVO();
+		vo3.setWork("eat!");
+		vo3.setTime(7);
+		list.add(vo3);
+		
+		return list;
 	}
 }
