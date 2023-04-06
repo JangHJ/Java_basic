@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 싱글톤 만들거 있으면 여기에 설정해주세요. @Component과 같은 역할 어노테이션으로 싱글톤 생성하는 것이 불가능할 
+		때 보통 사용함. 1) mybatis 2) dbcp: mybatis에 dbcp를 껴야함. 3) mybtis config: mybatis설정 
+		담당 -->
+
+	<!-- 1) mybatis 
+		SqlSessionTemplate my = new SqlSessionTemplate(config);
+	-->
+	<bean id="my" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="config"></constructor-arg>
+	</bean>
+
+	<!-- DBCP dbcp = new DBCP(); 
+		dbcp.setDriverClassName = "com.mysql.cj.~~~"; 
+		dbcp.setUrl = "jdbc:mysql://localhost:3306/multi";  
+		dbcp.setUsername = "root"; 
+		dbcp.setPassword = "1234"; jdbc의 1,2단계를 담당해주는 클래스! -->
+	<!-- 2) dbcp -->
+	<bean id="dbcp" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/multi?serverTimezone=UTC"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="1234"></property>
+	</bean>
+
+	<!-- 3) mybatis config 경로쓸 때 classpath는 src/main/resources를 지정함.! -->
+	<bean id="config" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dbcp"></property>
+		<property name="configLocation"
+			value="classpath:mybatis-config.xml"></property>
+	</bean>
+</beans>
