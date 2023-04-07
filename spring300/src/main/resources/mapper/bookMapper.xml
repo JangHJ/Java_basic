@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book">
+
+	<insert id="create" parameterType="bookVO">
+		insert into book values (null,
+		#{name}, #{url}, #{img})
+	</insert>
+
+	<delete id="del" parameterType="int">
+		delete from book where id = #{id}
+	</delete>
+
+	<update id="up" parameterType="bookVO">
+		update book set name = #{name}
+		where id = #{id}
+	</update>
+
+	<select id="one" parameterType="int" resultType="bookVO">
+		select * from
+		book where id = #{id}
+	</select>
+
+	<select id="all" resultType="bookVO">
+		select * from book
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
