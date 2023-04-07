@@ -1,5 +1,7 @@
 package com.multi.mvc300;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,17 +14,18 @@ public class BbsDAO { // CRUD
 	SqlSessionTemplate my;
 	
 //	public ArrayList<BbsVO> list() {
-//		
+//		ArrayList<BbsVO> list = my.selectOne("bbs.one");
 //		return list;
 //	}
 //
 //	// 메서드를 만드는 것 ==> 메서드 정의(define)!
 //	// 메서드를 정의했다고 실행되는 것은 아니다.!
 //	// 메서드를 쓰는 것 ==> 메서드 호출(call)!
-//	public BbsVO one(int no) {
-//		
-//		return bag;
-//	}
+
+	public BbsVO one(int no) {
+		BbsVO bag = my.selectOne("bbs.one", no);
+		return bag;
+	}
 
 	public int delete(int no) {
 		int result = my.insert("bbs.del", no);
@@ -40,5 +43,10 @@ public class BbsDAO { // CRUD
 	public int insert(BbsVO bag) {
 		int result = my.insert("bbs.create", bag);
 		return result;
+	}
+	
+	public List<BbsVO> all() {
+		List<BbsVO> list = my.selectList("bbs.all");
+		return list;
 	}
 }

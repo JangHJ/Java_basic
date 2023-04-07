@@ -1,7 +1,10 @@
 package com.multi.mvc300;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller //스프링에서 제어하는 역할로 등록! 
@@ -36,14 +39,20 @@ public class BbsController {
 		dao.delete(no);
 	}
 	
-//	@RequestMapping("one2.multi")
-//	public void one(int no) {
-//		System.out.println("one2요청됨.");
-//		System.out.println(no);
-//		BbsVO bag = dao.one(no);
-//		//bbs상세페이지 만들 때, reply list도 함께 가지고 와야함.
-//		ArrayList<ReplyVO> list = dao2.list(no);
-//	}
+	@RequestMapping("one2")
+	public void one(int no, Model model) {
+		System.out.println("one요청됨.");
+		System.out.println(no);
+		BbsVO bag = dao.one(no);
+		model.addAttribute("bag", bag);
+	}
+	
+	@RequestMapping("all2")
+	public void all(Model model) {
+		System.out.println("all2요청됨.");
+		List<BbsVO> list = dao.all();
+		model.addAttribute("list", list);
+	}
 //	
 //	@RequestMapping("one22")
 //	@ResponseBody 

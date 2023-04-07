@@ -41,7 +41,7 @@ hr{
 </form>
 <hr>
 
-<h3>게시글 삭제</h3>
+<h3>게시글 삭제</h3>c
 <form action="delete2" method="get">
 	no : <input name="no" value=6><br>
 	<button onclick="alert('delete2가 요청됨!');" type="submit">삭제하기</button>
@@ -60,8 +60,8 @@ hr{
 <hr>
 
 <h3>게시글 전체검색</h3>
-<form action="list2" method="get">
-	<button onclick="alert('list2가 요청됨!');" type="submit">전체 검색</button>
+<form action="all2" method="get">
+	<button onclick="alert('all2가 요청됨!');" type="submit">전체 검색</button>
 </form>
 <hr>
 </body>

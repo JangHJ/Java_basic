@@ -41,7 +41,7 @@ th {
 </head>
 <body>
 	<a href="bbs.jsp"><button>처음페이지로</button></a>
-	<a href="list2.multi"><button>게시물 전체 목록페이지</button></a>
+	<a href="list2"><button>게시물 전체 목록페이지</button></a>
 	<hr color="red">
 	<%
 		//세션에서 값을 꺼내는 방법 
@@ -53,10 +53,10 @@ th {
 	if (id != null) {
 		if (id.equals(writer)) {
 	%>
-	<a href="update2.multi">
+	<a href="update2">
 		<button style="background: pink;">수정</button>
 	</a>
-	<a href="delete2.multi?no=${bag.no}">
+	<a href="delete2?no=${bag.no}">
 		<button style="background: pink;">삭제</button>
 	</a>
 	<%
