@@ -46,8 +46,8 @@
 
 <h3>회원 검색</h3>
 <hr color="pink">
-<a href="one.multi?id=apple">아이디 apple</a><br>
-<a href="one.multi?id=apple22">아이디 apple22</a><br>
+<a href="one?id=apple1">아이디 apple1</a><br>
+<a href="one?id=apple2">아이디 apple2</a><br>
 <form action="one" method="get">
 	id : <input name="id" value="apple"><br>
 	<button type="submit">서버로 전송</button>
@@ -56,7 +56,7 @@
 
 <h3>회원 전체 검색</h3>
 <hr color="magenta">
-<form action="list.multi" method="get">
+<form action="all" method="get">
 <button type="submit">전체 검색</button>
 </form>
 <hr color="magenta">

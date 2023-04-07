@@ -1,5 +1,5 @@
-<%@page import="com.multi.mvc300.BbsVO"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="com.multi.mvc300.MemberVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%><%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -35,37 +35,37 @@ th {
 </style>
 </head>
 <body>
-<h2>게시글 전체검색</h2>
+<h2>멤버 전체검색</h2>
 <table>
 <tr id="t1">
-<th>no</th>
-<th>title</th>
-<th>content</th>
-<th>writer</th>
+<th>id</th>
+<th>pw</th>
+<th>name</th>
+<th>tel</th>
 </tr>
+
+<!-- 
 <% 
-	ArrayList<BbsVO> list = (ArrayList<BbsVO>)request.getAttribute("list");
-    for(BbsVO bag: list){
+	List<MemberVO> list = (List<MemberVO>)request.getAttribute("list");
+    for(MemberVO bag: list){
 %>
 <tr>
-	<td class="down"><%= bag.getNo() %></td>
-	<td class="down">
-		<a href="one2.multi?no=<%= bag.getNo() %>"><%= bag.getTitle() %></a>
-	</td>
-	<td class="down"><%= bag.getContent() %></td>
-	<td class="down"><%= bag.getWriter() %></td>
+	<td class="down"><%= bag.getId() %></td>
+	<td class="down"><%= bag.getPw() %></td>
+	<td class="down"><%= bag.getName() %></td>
+	<td class="down"><%= bag.getTel() %></td>
 </tr>
 <% } %>
+ -->
 
-<!--
 <c:forEach var="bag" items="${list}">
 <tr>
-<td>${bag.no}</td>
-<td><a href="one2.multi?no=${bag.no}">${bag.title}</a></td>
-<td>${bag.content}</td>
-<td>${bag.writer}</td>
+<td><a href="one?id=${bag.id}">${bag.id}</a></td>
+<td>${bag.pw}</td>
+<td>${bag.name}</td>
+<td>${bag.tel}</td>
 </tr>
-</c:forEach>-->
+</c:forEach>
 
 </table>
 </body>

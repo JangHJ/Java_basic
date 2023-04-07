@@ -13,6 +13,14 @@
 	<update id="up"  parameterType="memberVO">
 		update member set tel = #{tel} where id = #{id}
 	</update>
+
+	<select id="one"  parameterType="String" resultType="memberVO">
+		select * from member where id = #{id}
+	</select>
+
+	<select id="all" resultType="memberVO">
+		select * from member
+	</select>
 	
 </mapper>
 

@@ -1,5 +1,7 @@
 package com.multi.mvc300;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,15 +25,15 @@ public class MemberDAO { // CRUD
 //	}
 //
 //	public ArrayList<MemberVO> list() {
-//		
+//		ArrayList<MemberVO> list = my.select("member.list", null);
 //		return list;
 //	}
-//
-//	public MemberVO one(String id) {
-//		
-//		return bag;
-//	}
-//
+
+	public MemberVO one(String id) {
+		MemberVO bag = my.selectOne("member.one", id);
+		return bag;
+	}
+
 	public int delete(String id) {
 		int result = my.insert("member.del", id);
 		return result;
@@ -49,5 +51,10 @@ public class MemberDAO { // CRUD
 		int result = my.insert("member.create", bag);
 		//namespace.id
 		return result;
+	}
+	
+	public List<MemberVO> all() {
+		List<MemberVO> list = my.selectList("member.all");
+		return list;
 	}
 }
