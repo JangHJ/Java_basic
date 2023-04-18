@@ -1,4 +1,4 @@
-package 컬렉션2;
+package 컬렉션;
 
 
 public class 삼항연산자테스트 {
