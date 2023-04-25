@@ -8,5 +8,7 @@
 </head>
 <body>
 	hello
+	<a href="test_tmp">축제DB</a>
+	<a href="test_tmp2">시설DB</a>
 </body>
 </html>
