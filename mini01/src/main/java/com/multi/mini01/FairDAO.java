@@ -13,7 +13,10 @@ public class FairDAO {
 	SqlSessionTemplate my;
 	
 	public void insert(FairVO bag) {
+		System.out.println("FairVO : " + bag);
 		my.insert("fair.create", bag);
+
+		
 	}
 	
 	public void delete(String id) {
