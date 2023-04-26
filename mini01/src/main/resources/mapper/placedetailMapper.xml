@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="placedt">
+
+	<insert id="create" parameterType="placedtVO">
+		replace into placedetail (id, name, cnt, chartr, opende, seatscale, telno, relateurl, adres, la, lo )
+		VALUES (#{id}, #{name}, #{cnt}, #{chartr}, #{opende}, #{seatscale}, #{telno}, #{relateurl}, #{adres}, #{la}, #{lo})
+	</insert>
+
+	<delete id="del">
+		delete from placedetail
+	</delete>
+
+	<select id="one" parameterType="String" resultType="placedtVO">
+		select id from placedetail where id = #{id}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
