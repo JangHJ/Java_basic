@@ -16,9 +16,8 @@ public class PlaceDAO {
 		my.insert("place.create", bag);
 	}
 	
-	public void delete(String id) {
-		int result = my.delete("place.del", id); //int
-		System.out.println(result);
+	public void delete() {
+		my.delete("place.del");
 	}
 
 	public void update(PlaceVO bag) {

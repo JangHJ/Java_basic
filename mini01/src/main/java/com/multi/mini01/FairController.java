@@ -20,12 +20,11 @@ public class FairController {
 	@Autowired
 	FairDAO dao; 
 	
-	
 	@RequestMapping("test_tmp")
 	public void test() {
-		was_main();
+		test_main();
 	}	
-	public void was_main() {
+	public void test_main() {
 		String key = "55f2e69c1e6146dab5fe824a31328f70"; // api key값
 		try {
 			String url = "https://www.kopis.or.kr/openApi/restful/prffest?service=" + key;
@@ -55,7 +54,6 @@ public class FairController {
 					String todate = getTagValue("prfpdto", eElement);
 					String place = getTagValue("fcltynm", eElement);
 					String poster = getTagValue("poster", eElement);
-					
 					String genre = getTagValue("genrenm", eElement);
 					String state = getTagValue("prfstate", eElement);
 					String festival = getTagValue("festival", eElement);
@@ -115,9 +113,8 @@ public class FairController {
 	}	
 
 	@RequestMapping("delete")
-	public void delete(String id) {
-		System.out.println(id);
-		dao.delete(id);
+	public void delete() {
+		dao.delete();
 	}
 	
 	@RequestMapping("update")
@@ -134,10 +131,12 @@ public class FairController {
 		model.addAttribute("vo", vo); //속성으로 지정
 	}
 	
+
 	@RequestMapping("list")
 	public void list(Model model) {
 		List<FairVO> list = dao.list();
 		//view아래까지 전달할 데이터를 model객체를 이용해 속성으로 지정
+		System.out.println(list.size()); 
 		model.addAttribute("list", list); //속성으로 지정
 	}
 }

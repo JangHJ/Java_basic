@@ -19,9 +19,9 @@ public class FairDAO {
 		
 	}
 	
-	public void delete(String id) {
-		int result = my.delete("fair.del", id); //int
-		System.out.println(result);
+	public void delete() {
+		my.delete("fair.del");
+		//System.out.println(result);
 	}
 
 	public void update(FairVO bag) {
