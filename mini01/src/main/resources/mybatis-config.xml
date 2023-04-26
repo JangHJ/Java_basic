@@ -8,10 +8,12 @@
    <typeAliases>
       <typeAlias type="com.multi.mini01.FairVO" alias="fairVO"></typeAlias>
       <typeAlias type="com.multi.mini01.PlaceVO" alias="placeVO"></typeAlias>
+      <typeAlias type="com.multi.mini01.PlaceDetailVO" alias="placedtVO"></typeAlias>
    </typeAliases>
    <mappers>
    <!-- SQL문 정의하는 파일들의 목록을 지정. 테이블당 한개 사용 -->
       <mapper resource="mapper/fairMapper.xml"/> 
       <mapper resource="mapper/placeMapper.xml"/> 
+      <mapper resource="mapper/placedetailMapper.xml"/> 
    </mappers>
 </configuration>

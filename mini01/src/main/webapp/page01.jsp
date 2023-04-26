@@ -56,7 +56,7 @@
 	<h1>LOGO</h1>
 		<ul>
 			<li><a class="menuLink" href="perform.html">공연</a></li>
-			<li><a class="selected" href="festtival.html">축제</a></li>
+			<li><a class="menuLink" href="list">축제</a></li>
 			<li><a class="menuLink" href="search.html">태그검색</a></li>
 			<li><a class="menuLink" href="service.html">고객센터</a></li>
 		</ul>

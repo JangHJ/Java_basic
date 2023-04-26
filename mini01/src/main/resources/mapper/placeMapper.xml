@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="place">
-	
+
 	<insert id="create" parameterType="placeVO">
-		insert into place values (#{fcltynm}, #{mt10id}, #{mt13cnt}, #{fcltychartr}, #{opende}, #{seatscale}, #{telno}, #{relateurl}, #{adres}, #{la}, #{lo})
+		replace into place (id, name,
+		cnt, chartr, sido, gugun, opende)
+		VALUES (#{id}, #{name}, #{cnt}, #{chartr}, #{sido}, #{gugun}, #{opende})
 	</insert>
-	
-	<delete id="del"  parameterType="placeVO">
-		delete from place where mt10id = #{id}
+
+	<delete id="del">
+		delete from place
 	</delete>
+
+	<select id="one" parameterType="String" resultType="placeVO">
+		select id from place where name = #{name}
+	</select>
 	
-	<!--
-	<update id="up"  parameterType="placeVO">
-		update place set tel = #{tel} where mt10id = #{id}
-	</update>
-	  -->
-	  
+	<select id="all" resultType="placeVO">
+		select * from place
+	</select>
 </mapper>
 
 

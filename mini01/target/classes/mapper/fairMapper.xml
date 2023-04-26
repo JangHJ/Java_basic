@@ -4,22 +4,24 @@
 
 
 	<select id="test" resultType="fairVO">
-		select * from fair
+		select distinct * from fair
 	</select>
 	
-	
-	
 	<insert id="create" parameterType="fairVO">
-		INSERT INTO fair (id, name, FROMDATE, TODATE, place, poster, genre, state)
-    VALUES (#{id}, #{name}, #{fromdate}, #{todate}, #{place}, #{poster}, #{genre}, #{state})
+		replace into fair (id, name, FROMDATE, TODATE, place, poster, genre, state)
+    	VALUES (#{id}, #{name}, #{fromdate}, #{todate}, #{place}, #{poster}, #{genre}, #{state})
 	</insert>
 	
-	<delete id="del"  parameterType="fairVO">
-		delete from fair where id = #{id}
+	<delete id="del">
+		delete from fair
 	</delete>
 	
 	<update id="up"  parameterType="fairVO">
 		update fair set festival = #{festival} where id = #{id}
 	</update>
+	
+	<select id="all" resultType="fairVO">
+		select * from fair where genre = "서양음악(클래식)"
+	</select>
 	
 </mapper>
