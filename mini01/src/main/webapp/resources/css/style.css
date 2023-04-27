@@ -1,0 +1,179 @@
+@charset "UTF-8";
+
+@import
+	url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css)
+	;
+
+nav {
+	font-size: 15pt;
+	font-family: 'NanumSquare', sans-serif;
+	position: relative;
+}
+
+nav ul {
+	padding: 0;
+	margin: 0 auto;
+	width: auto;
+	background-color: #b082ab;
+}
+
+nav li {
+	
+}
+
+nav a {
+	line-height: 50px;
+	height: 50px;
+}
+
+nav li a {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+nav li:last-child a {
+	border-right: 0;
+}
+
+nav a:hover, nav a:active {
+	font-weight: 800;
+}
+
+nav a#pull {
+	display: none;
+}
+
+html {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+ul {
+	/*list-style-type: none;*/
+	margin: 0;
+	padding: 0;
+	background-color: #FFFFFF;
+	text-align: center;
+}
+
+li {
+	/*position: relative;*/
+	display: inline-block;
+}
+
+a{
+	text-decoration: none; color: black; 
+}
+
+li a {
+	color: #000000; /*메뉴 색깔 검정색*/
+	text-align: center;
+	padding: 14.5px 100px;
+	font-weight: 800;
+}
+
+li a:hover {
+	/*color: #597812;*/
+	/*color: #FFD400;*/
+	/*color : #185bd9;*/
+	color: #FFFFFF;
+	font-weight: 800;
+}
+
+li a:visited {
+	/*color: #597812;*/
+	/*color: #FFD400;*/
+	/*color : #185bd9;*/
+	color: #FFFFFF;
+	font-weight: 800;
+}
+
+.menu {
+	width: 5000px;
+	height: 50px;
+	text-align: center;
+	max-width: 100%;
+	background-position: center;
+	background-size: cover;
+	background-color: #FFFFFF;
+	color: white;
+	position: absolute;
+	z-index: 1;
+}
+
+body {
+	font-family: 'NanumSquare', sans-serif;
+	font-size: 18px;
+}
+
+body .bold {
+	font-weight: 700;
+}
+
+#item-frame {
+    display: inline-block;
+    width: 320px;
+    margin: 20px;
+    text-align: center;
+}
+
+#item-poster img {
+    width: 300px;
+    object-fit: cover;
+    object-position: center;
+}
+
+#item-area {
+	font-size: 12pt;
+}
+
+#item-date {
+	font-size: 12pt;
+}
+
+#item-name {
+	font-size: 13pt;
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  z-index: 999;
+}
+
+#result {
+  position: fixed;
+  margin-top: 20px;
+  top: 140px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 150px);
+  overflow-y: auto;
+  align-items : center;
+}
+
+section{
+	margin:auto;
+}
+
+#list1{
+	margin: 0 auto;
+	text-align: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+#str{
+	margin-left: 20px;
+}
+
+h1{
+	margin: 20px;
+}
