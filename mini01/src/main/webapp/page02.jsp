@@ -9,11 +9,11 @@
 		$("#header").load("header.jsp");
 		
 		$.ajax({
-			url:"list",
+			url:"one",
 			type:"post",
 			datatype:"html",
 			success:function(data){
-				$("#result").append(data);
+				$("#result").html(data);
 			}	
 		});
 		
